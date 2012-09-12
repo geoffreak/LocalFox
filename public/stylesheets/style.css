@@ -1,0 +1,116 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #123456;
+  color: #333;
+  padding-bottom: 15px;
+}
+
+#logo {
+	width: 95%;
+	height: 50px;
+	background-image: url(/images/logo.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	color: white;
+	margin: 0 auto;
+}
+
+#wrap {
+	margin: 0 auto;
+	padding: 0 10px;
+	margin-bottom: 0px;
+}
+.container {
+	
+}
+
+a:link, a:visited, a:active, a:hover {
+	color: #4978B2;
+	text-decoration: none;
+}
+a:active, a:hover {
+	color: #0072FF;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	color: #FF2E19;
+	font-size: 1.6em;
+}
+table {
+	width: 100%;
+	border: 3px solid #4978B2;
+	margin: 0 auto;
+}
+/*table.manga tr {
+	border: 1px solid #333;
+}*/
+
+table tr:first-child th {
+	padding: 5px;
+	background-color: #CCC;
+	font-weight: bold;
+}
+table tr td {
+	padding: 5px;
+	border-top: 3px solid #4978B2;
+	text-align: center;
+	vertical-align: middle;
+}
+table tr td.leftbold {
+	font-weight: bold;
+	text-align: left;
+	color: #194882;
+}
+
+table tbody tr {	
+	background-color: #AAA;
+}
+table tbody tr.new {	
+	background-color: #7698BA;
+}
+table.highlight tbody tr:hover,  table.highlight tbody tr:hover td.leftbold span {
+	color: white;	
+	background-color: #80726F;
+	cursor: pointer;
+}
+table.highlight tbody tr.new:hover,  table.highlight tbody tr.new:hover td.leftbold span {
+	background-color: #FF2F19;
+}
+table.highlight tbody tr td:first-child img {
+	height: 70px; width: 50px;
+}
+table tbody tr td:first-child img {
+	border: 1px solid black;
+}
+table.highlight tbody tr:hover td:first-child img {
+	border-color: #666;
+}
+
+.header {
+	padding-top: 20px;
+}
+.submit, .field {
+  color: #000;
+  background: #CCC;
+  font-weight: bold;
+  border: 1px solid #FFF;
+  padding: 3px;
+  margin: 2px;
+}
+.field {
+	width: 300px;
+}
+.submit {
+	width: 75px;
+}
+
+.submit:hover, .field:hover {
+  color: #FFF;
+  background: #0072FF;
+}
+ .submit:hover {
+  cursor: pointer;
+}

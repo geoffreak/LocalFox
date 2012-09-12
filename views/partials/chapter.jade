@@ -1,0 +1,23 @@
+- if (chapter.downloaded)	
+	tr(onclick="window.location='/read/"+uri+'/v'+chapter.volume+'/c'+chapter.chapter+"'", class=chapter.class)
+		td= chapter.volume
+		td= chapter.chapter
+		td.leftbold
+			span= chapter.title
+			- if (!chapter.downloaded)
+				span(style="font-weight: normal; color: #EDE") &nbsp;[Downloading]
+		td= chapter.pages
+		td= chapter.pubDate
+		td
+			a(href='/delete/'+uri+'/v'+chapter.volume+'/c'+chapter.chapter) &times;
+- else	
+	tr
+		td= chapter.volume
+		td= chapter.chapter
+		td.leftbold
+			span= chapter.title
+			span(style="font-weight: normal; color: #EDE") &nbsp;[Download Pending]
+		
+		td &nbsp;
+		td= chapter.pubDate
+		td &nbsp;

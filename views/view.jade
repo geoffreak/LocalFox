@@ -1,0 +1,133 @@
+.hidden-phone
+	table.table.table-bordered.table-striped
+		thead
+			tr
+				th(colspan=(cover)?'3':'2', style='text-align: left') Manga
+					- if (processing)
+						span.pull-right(style="font-weight: normal;color:#777") [Processing]
+					- else
+						a.close.pull-right(href='/delete/'+uri) &times;
+		tbody
+			tr
+				td.leftbold Title
+				td(style='text-align: left')= title
+				- if (cover)
+					td(rowspan='6', style='width: 200px;')
+						img(src=cover)
+			tr
+				td.leftbold Status
+				td(style='text-align: left')= mangaStatus
+			tr
+				td.leftbold Genres
+				td(style='text-align: left')= genres
+			tr
+				td.leftbold Updated
+				td(style='text-align: left')= lastUpdate
+			tr
+				td.leftbold Chapters
+				td(style='text-align: left')= chapterCount
+			tr
+				td.leftbold Description
+				td(style='text-align: left')!= description
+.visible-phone
+	table.table.table-bordered.table-striped
+		thead
+			tr
+				th(colspan='2', style='text-align: left') Manga
+					- if (processing)
+						span.pull-right(style="font-weight: normal;color:#777") [Processing]
+					- else
+						a.close.pull-right(href='/delete/'+uri) &times;
+		tbody
+			- if (cover)
+				tr
+					td(colspan='2',style='text-align:center;')
+						img(src=cover)
+			tr
+				td.leftbold Title
+				td(style='text-align: left')= title
+			tr
+				td.leftbold Status
+				td(style='text-align: left')= mangaStatus
+			tr
+				td.leftbold Genres
+				td(style='text-align: left')= genres
+			tr
+				td.leftbold Updated
+				td(style='text-align: left')= lastUpdate
+			tr
+				td.leftbold Chapters
+				td(style='text-align: left')= chapterCount
+			tr
+				td.leftbold Description
+				td(style='text-align: left')!= description
+.hidden-phone
+	table.table.table-bordered.table-striped.table-hover
+		thead
+			tr
+				th(style='width:60px') Volume
+				th(style='width:60px') Chapter
+				th Title
+				th(style='width:60px') Pages
+				th(style='width:120px') Published
+				th(style='width:15px')
+		tbody
+			- if (chapters.length == 0)
+				tr
+					td(colspan='6') 
+						em No chapters available
+			- for (var i = 0; i < chapters.length; i++)
+				- var chapter = chapters[i];
+				- if (chapter.downloaded)
+					- classs = chapter.class == 'new' ? 'success' : '';	
+					tr(onclick="window.location='"+uri+'/v'+chapter.volume+'/c'+chapter.chapter+"'", style="cursor:pointer;", class=classs)
+						td= chapter.volume
+						td= chapter.chapter
+						td= chapter.title
+						td= chapter.pages
+						td= chapter.pubDate
+						td
+							a.close(href='/delete/'+uri+'/v'+chapter.volume+'/c'+chapter.chapter) &times;
+				- else	
+					tr
+						td= chapter.volume
+						td= chapter.chapter
+						td
+							em [Download Pending]&nbsp;
+							em= chapter.title
+						
+						td &nbsp;
+						td= chapter.pubDate
+						td &nbsp;
+.visible-phone
+	table.table.table-bordered.table-striped.table-hover
+		thead
+			tr
+				th Chapters
+		tbody
+			- if (chapters.length == 0)
+				tr
+					td(style='text-align:center;') 
+						em No chapters available
+			- for (var i = 0; i < chapters.length; i++)
+				- var chapter = chapters[i];
+				- if (chapter.downloaded)
+					- classs = chapter.class == 'new' ? 'success' : '';	
+					tr(onclick="window.location='"+uri+'/v'+chapter.volume+'/c'+chapter.chapter+"'", style="cursor:pointer;", class=classs)
+						td
+							a.pull-right.close(href='/delete/'+uri+'/v'+chapter.volume+'/c'+chapter.chapter) &times;
+							small Volume #{chapter.volume}, Chapter #{chapter.chapter} 
+							br
+							strong #{chapter.title}
+							br
+							small #{chapter.pages} Pages, Published #{chapter.pubDate}
+				- else	
+					tr
+						td
+							small.pull-right.muted
+								em [Pending]&nbsp;
+							small Volume #{chapter.volume}, Chapter #{chapter.chapter} 
+							br
+							strong #{chapter.title}
+							br
+							small #{chapter.pages} Pages, Published #{chapter.pubDate}

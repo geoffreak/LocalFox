@@ -1,0 +1,63 @@
+!!!5
+html
+	head
+		title LocalFox v4
+		link(rel='stylesheet', href='/css/bootstrap.lf.css')
+		//link(rel='stylesheet', href='/css/bootstrap.min.css')
+		//link(rel='stylesheet', href='/css/bootstrap.min.cyborg.css')
+		//link(rel='stylesheet', href='/css/font-awesome.css')
+		//link(rel='stylesheet', href='/stylesheets/reset.css')
+		//link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='icon', href='/favicon.ico', type='image/x-icon')
+		//link(rel='stylesheet/less', href='/less/bootstrap.less')
+		style
+			//body { padding-top: 60px; }
+			.navbar .btn-navbar { display: block; }
+		script(src="/js/jquery.js");
+		script(src="/js/less.js");
+		script(src="/js/bootstrap.min.js");
+		//script(src="/js/jquery.touchwipe.min.js");
+		script
+			$(function(){$(".nav-collapse").collapse()});
+			(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")
+		meta(name="viewport",content="width=device-width, initial-scale=1.0")
+		meta(name="apple-mobile-web-app-capable",content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style",content="black")
+	body
+		.navbar
+			.navbar-inner
+				.container-fluid
+					.row-fluid
+						span
+							a.brand(href="/").hidden-phone LocalFox v4
+							a.brand(href=showAdd!==true?backToUrl:'/').visible-phone LocalFox v4
+						.hidden-phone
+							ul.nav
+								- if (showAdd !== true)
+									li
+										a(href="/") Manga List
+								- if (showAdd !== true && backTo != "Manga List") 
+									li
+										a(href=backToUrl) #{backTo}
+							form.navbar-form.pull-right(method='post', action='/search')
+								.input-append
+									input.input-large(type='text', class='field', name='query', placeholder='Find new manga...')
+									input.btn.search-query(type='submit', class='submit', value='Find')
+						.visible-phone
+							button.btn.btn-navbar(data-toggle="collapse",data-target=".nav-collapse")
+								span.icon-bar
+								span.icon-bar
+								span.icon-bar
+							.nav-collapse.in.collapse
+								form.navbar-form(method='post', action='/search')
+									.input-append
+										input.input-mini(type='text', class='field', name='query', placeholder='Find new manga...')
+										input.btn.search-query(type='submit', class='submit', value='Go')
+								ul.nav
+									- if (showAdd !== true)
+										li
+											a(href="/") Manga List
+									- if (showAdd !== true && backTo != "Manga List") 
+										li
+											a(href=backToUrl) #{backTo}
+		.container-fluid!= body

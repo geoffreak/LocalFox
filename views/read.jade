@@ -1,0 +1,64 @@
+script
+	/*$(function(){
+		$("img").touchwipe({
+			wipeLeft: function() { if("#{nextPage}") window.location.href = "#{nextPage}#page"; },
+			wipeRight: function() { if("#{prevPage}") window.location.href = "#{prevPage}#page"; },
+			min_move_x: 20,
+			min_move_y: 20,
+			preventDefaultEvents: false
+		});
+	});*/
+table.table.table-bordered.table-striped
+	thead
+		tr
+			th(colspan="10") 
+				span.muted.hidden-phone Volume #{volume}, Chapter #{chapter} -
+				span.muted
+					span.visible-phone V#{volume}, C#{chapter} -
+				strong &nbsp;#{title}
+	tbody
+		tr
+			td(style='text-align: center;')
+				.row-fluid
+					a.btn.pull-left(href=prevChapter?prevChapter:'javascript:return false;',class=prevChapter?'':'disabled')
+						i.icon-caret-left
+						i.icon-caret-left
+						span.hidden-phone &nbsp;Chapter
+					span.pull-left &nbsp;  
+					a.btn.pull-left(href=prevPage?prevPage:'javascript:return false;',class=prevPage?'':'disabled')
+						i.icon-caret-left
+						span.hidden-phone &nbsp;Page
+					span
+						button.btn.disabled.visible-phone #{pageMin} / #{pageMax}
+					button.btn.disabled.hidden-phone Page #{pageMin} of #{pageMax}
+					a.btn.pull-right(href=nextChapter?nextChapter:'javascript:return false;',class=nextChapter?'':'disabled')
+						span.hidden-phone Chapter&nbsp;
+						i.icon-caret-right
+						i.icon-caret-right
+					span.pull-right &nbsp;  
+					a.btn.pull-right(href=nextPage?nextPage:'javascript:return false;',class=nextPage?'':'disabled')
+						span.hidden-phone Page&nbsp;
+						i.icon-caret-right
+				.row-fluid(style="margin: 10px 0")
+					a(href=nextPage?nextPage+"#page":backToUrl,name="page")
+						img(src=image, alt=title)
+				.row-fluid
+					a.btn.pull-left(href=prevChapter?prevChapter:'javascript:return false;',class=prevChapter?'':'disabled')
+						i.icon-caret-left
+						i.icon-caret-left
+						span.hidden-phone &nbsp;Chapter
+					span.pull-left &nbsp;  
+					a.btn.pull-left(href=prevPage?prevPage:'javascript:return false;',class=prevPage?'':'disabled')
+						i.icon-caret-left
+						span.hidden-phone &nbsp;Page
+					span
+						button.btn.disabled.visible-phone #{pageMin} / #{pageMax}
+					button.btn.disabled.hidden-phone Page #{pageMin} of #{pageMax}
+					a.btn.pull-right(href=nextChapter?nextChapter:'javascript:return false;',class=nextChapter?'':'disabled')
+						span.hidden-phone Chapter&nbsp;
+						i.icon-caret-right
+						i.icon-caret-right
+					span.pull-right &nbsp;  
+					a.btn.pull-right(href=nextPage?nextPage:'javascript:return false;',class=nextPage?'':'disabled')
+						span.hidden-phone Page&nbsp;
+						i.icon-caret-right

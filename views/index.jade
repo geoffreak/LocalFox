@@ -1,0 +1,54 @@
+.hidden-phone
+	table.table.table-bordered.table-striped.table-hover
+		thead
+			tr
+				th(style='width:70px')
+				th Title
+				th(style='width:80px') Chapters
+				th(style='width:80px') Status
+				th(style='width:120px') Last Updated
+		tbody
+			- for (var i = 0; i < mangas.length; i++)
+				- var manga = mangas[i];
+				- classs = manga.class == 'new' ? 'success' : '';
+				tr(onclick="window.location='/read/"+manga.uri+"'", class=classs, style="cursor:pointer")
+					td
+						- if (manga.cover)
+							img(src=manga.cover)
+						- else
+							div(style='height: 99px;')
+					td.leftbold
+						strong #{manga.title}
+						br
+						em= manga.genres
+					td= manga.chapters
+					td= manga.status
+					- if (manga.processing)
+						td 
+							span= manga.lastUpdate
+							br
+							em Processing
+					- else 
+						td= manga.lastUpdate
+.visible-phone
+	table.table.table-bordered.table-striped(style="min-width:100%;max-width:100%")
+		tbody
+			- for (var i = 0; i < mangas.length; i++)
+				- var manga = mangas[i];
+				- classs = manga.class == 'new' ? 'success' : '';
+				tr(onclick="window.location='/read/"+manga.uri+"'", class=classs, style="cursor:pointer;min-width:100%;max-width:100%")
+					td
+						- if (manga.cover)
+							img.pull-right(src=manga.cover,style="max-height: 100px;max-width: 70px;margin-right: 10px;")
+						- if (manga.processing)
+							em [Processing]
+							|  
+							strong #{manga.title}
+						- else
+							strong #{manga.title}
+						br
+						em= manga.genres
+						br
+						small #{manga.chapters} Chapters, #{manga.status}
+						br
+						small Updated #{manga.lastUpdate}

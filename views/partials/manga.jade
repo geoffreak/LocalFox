@@ -1,0 +1,19 @@
+tr(onclick="window.location='/read/"+manga.uri+"'", class=manga.class)
+	td 
+		- if (manga.cover)
+			img(src=manga.cover, height='70', width='50')
+		- else
+			div(style='height: 70px; width: 50px;')
+	td.leftbold
+		span #{manga.title}
+		br
+		span(style="font-weight: normal; color: #EDE")= manga.genres
+	td= manga.chapters
+	td= manga.status
+	- if (manga.processing)
+		td 
+			span= manga.lastUpdate
+			br
+			span(style="font-weight: normal; color: #EDE") Processing
+	- else 
+		td= manga.lastUpdate
