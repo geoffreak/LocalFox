@@ -2,9 +2,11 @@ LocalFox, Version 4
 ================================
 by Josh DeVinney
 
-Keep your manga reading up-to-date. Includes Mangafox.com and Mangareader.net as sources. Dark UI allows for easy night-time reading and 
+Keep your manga reading up-to-date. Includes Mangafox.com and Mangareader.net as sources. Responsive and dark UI allows for easy night-time and mobile reading.
 
 Preview images can be found in the previews directory.
+
+*Note*: This is a single-user installation and is not intended to have multiple users use it.
 
 *Warning*: This script downloads the images and caches the files locally. If you follow a lot of manga, you will need to allocate around 1-3GB per 100 manga on average.
 
